@@ -1,0 +1,693 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback", system-ui, sans-serif;
+  --font-serif: "Cinzel", "Times New Roman", serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Custom animations for Stranger Things theme */
+  --animate-flicker: flicker 3s infinite;
+  --animate-glitch-1: glitch1 4s infinite;
+  --animate-glitch-2: glitch2 4s infinite;
+  --animate-pulse-glow: pulseGlow 2s ease-in-out infinite;
+  --animate-pulse-slow: pulseSlow 4s ease-in-out infinite;
+  --animate-pulse-slower: pulseSlower 6s ease-in-out infinite;
+  --animate-fog-slow: fogSlow 30s ease-in-out infinite;
+  --animate-fog-mid: fogMid 20s ease-in-out infinite;
+  --animate-fog-fast: fogFast 15s ease-in-out infinite;
+  --animate-fog-drift: fogDrift 25s ease-in-out infinite;
+  --animate-float-up: floatUp linear infinite;
+  --animate-grain: grain 0.5s steps(10) infinite;
+  --animate-border-pulse: borderPulse 2s ease-in-out infinite;
+  /* Added animation classes for login page */
+  --animate-card-fade-in: cardFadeIn 0.8s ease-out forwards;
+  --animate-portal-ripple: portalRipple 0.8s ease-out forwards;
+  --animate-button-glitch: buttonGlitch 0.3s ease-in-out;
+  /* Added new animations for input fields */
+  --animate-field-fade-in: fieldFadeIn 0.6s ease-out forwards;
+  --animate-input-glitch: inputGlitch 0.2s ease-in-out;
+  --animate-neon-shake: neonShake 0.4s ease-in-out;
+  /* Added new animations for About page */
+  --animate-content-fade-in: contentFadeIn 1s ease-out forwards;
+  --animate-content-fade-in-delay: contentFadeIn 1s ease-out 0.3s forwards;
+  --animate-energy-beam: energyBeam 2s ease-in-out infinite;
+  --animate-energy-beam-delay: energyBeam 2s ease-in-out 0.5s infinite;
+  --animate-scanline-scroll: scanlineScroll 8s linear infinite;
+  --animate-list-item-fade: listItemFade 0.5s ease-out forwards;
+  /* Added background zoom animation for event details page */
+  --animate-bg-zoom: bgZoom 30s ease-in-out infinite;
+  /* Added glitch-subtle animation for workshop card hover */
+  --animate-glitch-subtle: glitchSubtle 0.3s ease-in-out;
+  /* Added section-fade-in animation for workshop detail sections */
+  --animate-section-fade-in: sectionFadeIn 0.8s ease-out forwards;
+  /* Added pulse-glow-subtle animation for register button */
+  --animate-pulse-glow-subtle: pulseGlowSubtle 3s ease-in-out infinite;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Stranger Things Keyframe Animations */
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  3% {
+    opacity: 0.9;
+  }
+  6% {
+    opacity: 1;
+  }
+  7% {
+    opacity: 0.85;
+  }
+  9% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  52% {
+    opacity: 0.9;
+  }
+  53% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 0.85;
+  }
+  83% {
+    opacity: 0.9;
+  }
+  84% {
+    opacity: 1;
+  }
+}
+
+@keyframes glitch1 {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes glitch2 {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(2px, -2px);
+  }
+  40% {
+    transform: translate(2px, 2px);
+  }
+  60% {
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.8)) drop-shadow(0 0 60px rgba(220, 38, 38, 0.4));
+    opacity: 1;
+  }
+  50% {
+    filter: drop-shadow(0 0 50px rgba(220, 38, 38, 1)) drop-shadow(0 0 80px rgba(220, 38, 38, 0.6));
+    opacity: 0.95;
+  }
+}
+
+@keyframes pulseSlow {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulseSlower {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fogSlow {
+  0%,
+  100% {
+    transform: translateX(-10%) translateY(0);
+  }
+  50% {
+    transform: translateX(10%) translateY(-5%);
+  }
+}
+
+@keyframes fogMid {
+  0%,
+  100% {
+    transform: translateX(5%) translateY(0);
+  }
+  50% {
+    transform: translateX(-5%) translateY(3%);
+  }
+}
+
+@keyframes fogFast {
+  0%,
+  100% {
+    transform: translateX(-5%) translateY(0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateX(5%) translateY(-2%);
+    opacity: 0.35;
+  }
+}
+
+@keyframes fogDrift {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(3%) translateY(-2%);
+  }
+  50% {
+    transform: translateX(-2%) translateY(1%);
+  }
+  75% {
+    transform: translateX(1%) translateY(-1%);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, 5%);
+  }
+  30% {
+    transform: translate(7%, -25%);
+  }
+  40% {
+    transform: translate(-5%, 25%);
+  }
+  50% {
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    transform: translate(15%, 0%);
+  }
+  70% {
+    transform: translate(0%, 15%);
+  }
+  80% {
+    transform: translate(3%, 35%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
+
+@keyframes borderPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(220, 38, 38, 0.5), inset 0 0 5px rgba(220, 38, 38, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.8), inset 0 0 10px rgba(220, 38, 38, 0.2);
+  }
+}
+
+/* Added new keyframes for login page animations */
+@keyframes cardFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes portalRipple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(50);
+    opacity: 0;
+  }
+}
+
+@keyframes buttonGlitch {
+  0%,
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  20% {
+    clip-path: inset(20% 0 60% 0);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    clip-path: inset(40% 0 40% 0);
+    transform: translate(2px, -2px);
+  }
+  60% {
+    clip-path: inset(60% 0 20% 0);
+    transform: translate(-1px, 1px);
+  }
+  80% {
+    clip-path: inset(80% 0 0% 0);
+    transform: translate(1px, -1px);
+  }
+}
+
+/* New keyframes for email/password form */
+@keyframes fieldFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes inputGlitch {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(-1px);
+  }
+  20% {
+    transform: translateX(1px);
+  }
+  30% {
+    transform: translateX(-1px);
+  }
+  40% {
+    transform: translateX(1px);
+  }
+  50% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes neonShake {
+  0%,
+  100% {
+    transform: translateX(0) scale(1.02);
+    filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.8));
+  }
+  20% {
+    transform: translateX(-2px) scale(1.02);
+  }
+  40% {
+    transform: translateX(2px) scale(1.02);
+  }
+  60% {
+    transform: translateX(-1px) scale(1.02);
+  }
+  80% {
+    transform: translateX(1px) scale(1.02);
+  }
+}
+
+/* New keyframes for About page */
+@keyframes contentFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes energyBeam {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scaleX(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes scanlineScroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes listItemFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Added event card shake animation for hover */
+@keyframes eventShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(-2px) rotate(-0.5deg);
+  }
+  20% {
+    transform: translateX(2px) rotate(0.5deg);
+  }
+  30% {
+    transform: translateX(-2px) rotate(-0.5deg);
+  }
+  40% {
+    transform: translateX(2px) rotate(0.5deg);
+  }
+  50% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes cardGlitch {
+  0%,
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  5% {
+    clip-path: inset(10% 0 85% 0);
+    transform: translate(-2px, 0);
+  }
+  10% {
+    clip-path: inset(50% 0 30% 0);
+    transform: translate(2px, 0);
+  }
+  15% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+}
+
+/* New keyframe for slow background zoom animation */
+@keyframes bgZoom {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* Added labelFlicker animation for event card labels */
+@keyframes labelFlicker {
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(220, 38, 38, 0.8), 0 0 10px rgba(220, 38, 38, 0.6), 0 0 20px rgba(220, 38, 38, 0.4);
+  }
+  5% {
+    opacity: 0.8;
+    text-shadow: 0 0 3px rgba(220, 38, 38, 0.6), 0 0 6px rgba(220, 38, 38, 0.4);
+  }
+  10% {
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(220, 38, 38, 0.8), 0 0 10px rgba(220, 38, 38, 0.6), 0 0 20px rgba(220, 38, 38, 0.4);
+  }
+  15% {
+    opacity: 0.9;
+    text-shadow: 0 0 4px rgba(220, 38, 38, 0.7), 0 0 8px rgba(220, 38, 38, 0.5);
+  }
+  20% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  57% {
+    opacity: 0.7;
+    text-shadow: 0 0 2px rgba(220, 38, 38, 0.5), 0 0 5px rgba(220, 38, 38, 0.3);
+  }
+  60% {
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(220, 38, 38, 0.8), 0 0 10px rgba(220, 38, 38, 0.6), 0 0 20px rgba(220, 38, 38, 0.4);
+  }
+  80% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 1;
+  }
+}
+
+/* Added glitchSubtle animation for workshop card hover */
+@keyframes glitchSubtle {
+  0%,
+  100% {
+    transform: translate(0);
+    filter: none;
+  }
+  10% {
+    transform: translate(-1px, 1px);
+  }
+  20% {
+    transform: translate(1px, -1px);
+    filter: hue-rotate(5deg);
+  }
+  30% {
+    transform: translate(-1px, 0);
+  }
+  40% {
+    transform: translate(1px, 1px);
+    filter: hue-rotate(-5deg);
+  }
+  50% {
+    transform: translate(0);
+    filter: none;
+  }
+}
+
+/* Added sectionFadeIn animation for workshop detail page sections */
+@keyframes sectionFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Added pulseGlowSubtle animation for register button */
+@keyframes pulseGlowSubtle {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.4), inset 0 0 20px rgba(220, 38, 38, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.6), inset 0 0 25px rgba(220, 38, 38, 0.15);
+  }
+}
+
+/* Added fade-in-down animation for profile dropdown */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
